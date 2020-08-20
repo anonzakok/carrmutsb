@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ระบบลงทะเบียนผู้ใช้งาน</title>
+<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<link href="lib/bootstrap.min.css" rel="stylesheet" />
+<script>
+//init LIFF
+function initializeApp(data) {
+let urlParams = new URLSearchParams(window.location.search);
+$('#name').val(urlParams.toString());
+$('#userid').val(data.context.userId);
+
+$('#UserInfo').val(profile.displayName);
+}
+//ready
+$(function () {
+//init LIFF
+liff.init(function (data) {
+initializeApp(data);
+});
+//ButtonGetProfile
+$('#ButtonGetProfile').click(function () {
+liff.getProfile().then(
+profile=> {
+$('#UserInfo').val(profile.displayName);
+alert('done');
+}
+);
+});
+//ButtonSendMsg #QueryString
+$('#ButtonSendMsg').click(function () {
+liff.sendMessages([
+{
+type: 'text',
+// text: $('#userid').val() + $('#QueryString').val() + $('#msg').val()
+text: $('คุณเคยลงทะเบียนแล้ว').val()
+}
+])
+.then(() => {
+alert('done');
+})
+});
+});
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+       <div class="col-md-8 mx-auto mt-5 ">
+           <div class="card">
+               <form action="save.php" method="get" enctype="multipart/form-data">
+                   <div class="card-header text-center">
+                       <h5>กรุณากรอกข้อมูลให้ครบทุกช่อง!!</h5>
+                   </div>
+                   <div class="card-body">
+
+                    <input class="form-control" type="hidden" id="userid" name="userid" /> <br />
+                      
+                   <div class="form-group row">
+                       <label for="name" class="col-sm-3 col-form-label">ชื่อ-นามสกุล</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="name" name="name" require>
+                           </div>
+                       </div>
+                       <div class="form-group row">
+                           <label for="pos" class="col-sm-3 col-form-label">ตำแหน่ง</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="pos" name="pos" required>
+                           </div> 
+                       </div> 
+                       
+                       <div class="form-group row">
+                           <label for="samnak" class="col-sm-3 col-form-label">คณะ</label>
+                               <div class="col-sm-9">
+                               <select id="samnak" class="form-control" name="samnak" required>
+                                   <option selected>คณะวิทยาศาสตร์และเทคโนโลยี</option>
+                                   <option>คณะครุศาสตร์อุตสาหกรรม</option>
+                                   <option>คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร</option>
+                                   <option>คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ</option>
+                                   <option>คณะวิศวกรรมศาสตร์และสถาปัยกรรมศาสตร์</option>
+                                   <option>คณะศิลปศาสตร์</option>
+                               </select>
+                               </div>
+                       </div>
+
+                       <div class="form-group row">
+                           <label for="bra" class="col-sm-3 col-form-label">สาขา</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="bra" name="bra" required>
+                           </div> 
+                       </div> 
+                       <div class="form-group row">
+                           <label for="tell" class="col-sm-3 col-form-label">เบอร์โทร</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="tell" name="tell" required>
+                           </div> 
+                       </div> 
+                       <div class="form-group row">
+                           <label for="username" class="col-sm-3 col-form-label">ชื่อผู้ใช้</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="username" name="username" required>
+                           </div>
+                       </div>
+                       <div class="form-group row">
+                           <label for="pass" class="col-sm-3 col-form-label">รหัสผ่าน</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" id="pass" name="pass" required>
+                           </div>
+                       </div>
+                       <div class="card-footer text-center">
+                          <input type="Submit" name="ButtonSendMsg" id="ButtonSendMsg" class="btn btn-success" value="ลงทะเบียน">
+                    
+                       </div> 
+                   </div>
+               </form>
+           </div>
+       </div>  
+    </div> 
+ </div>
+</div>
+</div>
+</form>
+</body>
+</html>
