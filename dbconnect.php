@@ -1,5 +1,5 @@
 <?php  
-$mysqli = new mysqli("localhost", "root","","car_rmutsb");  
+$mysqli = new mysqli("localhost", "root","","car_rmutsb2");  
 /* check connection */ 
 if ($mysqli->connect_errno) {  
     printf("Connect failed: %s\n", $mysqli->connect_error);  

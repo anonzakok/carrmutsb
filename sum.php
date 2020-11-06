@@ -30,156 +30,29 @@
 </head>
 
 <body id="page-top">
-<?php if (empty($_SESSION['status'])){
-     header('location:login.php');
-  } else{?> 
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-  <a class="navbar-brand mr-1" href="index.php"><img src="logo.png"  width="70" height="70"> ระบบจัดการรถ ศูนย์สุพรรณบุรี</a>
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-          <i class="fas fa-bars"></i>
-        </button>
 
-      
+ 
+<div id="wrapper">
 
-  </nav>
-
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-    <?php if (isset($_SESSION['status'])){
-            if($_SESSION['status']=='t'){?>
-        <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user-circle fa-fw"> </i>
-              <span><?php echo $_SESSION['name'] ?></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            
-              <a class="dropdown-item" href="recar.php">พิมพ์ ใบขอใช้รถยนต์</a>
-              <h6 class="dropdown-header">รายงานการใช้วัสดุเชื้อเพลิง:</h6>
-              <a class="dropdown-item" href="sum.php">สรุป รายการใข้เชื้อเพลิง</a>
-  
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ</a>
-            </div>
-          </li>
-          <li class="nav-item ">
-        <a class="nav-link" href="fullcalendar3.6.2.php">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-          <span>ปฏิทิน การออกรถ</span>
+<!-- Sidebar -->
+<ul class="sidebar navbar-nav">
+      <!-- สมาชิก -->
+            <!-- หัวหน้ายาน -->
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"> </i>
         </a>
-      </li> 
-          <li class="nav-item ">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-table fas"></i>
-          <span>ตารางการออกรถ</span>
-        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="index.php">หน้าแรก </a>
+          <a class="dropdown-item" href="addbooking.php">เพิ่มข้อมูล </a>
+          <a class="dropdown-item" href="dellist.php">ลบข้อมูล </a>
+          <!-- <a class="dropdown-item" href="editbooking.php">แก้ไขข้อมูล </a> -->
+          <a class="dropdown-item" href="addF.php">สรุป </a>
+        </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="tables.php">
-        <i class="fa fa-address-card-o" aria-hidden="true"></i>
-          <span>รายชื่อพนักงานขับรถ</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="listcar.php">
-        <i class="fa fa-car" aria-hidden="true"></i>
-          <span>รายละเอียดยานพาหนะ</span></a>
-      </li>
-    </ul>
-      <?php } if ($_SESSION['status']=='m'){?>
-        <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user-circle fa-fw"> </i>
-              <span><?php echo $_SESSION['name'] ?></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <h6 class="dropdown-header">จัดการตารางออกรถ:</h6>
-              <a class="dropdown-item" href="addbooking.php">เพิ่ม ตารางออกรถ</a>
-              <a class="dropdown-item" href="dellist.php">ลบ ตารางออกรถ</a>
-              <a class="dropdown-item" href="editbooking.php">แก้ไข ตารางออกรถ</a>
-              <a class="dropdown-item" href="admin1.php">รายการรออนุมัติ</a>
-              <h6 class="dropdown-header">จัดการบัญชีสมาชิก:</h6>
-              <a class="dropdown-item" href="adduser.php">เพิ่ม บัญชีสมาชิก</a>
-              <a class="dropdown-item" href="deluser.php">ลบ บัญชีสมาชิก</a>
-              <h6 class="dropdown-header">รายงานการใช้วัสดุเชื้อเพลิง:</h6>
-              <a class="dropdown-item" href="addex.php">เพิ่ม รายการใข้เชื้อเพลิง</a>
-              <a class="dropdown-item" href="delex.php">ลบ รายการใข้เชื้อเพลิง</a>
-              <a class="dropdown-item" href="sum.php">สรุป รายการใข้เชื้อเพลิง</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ</a>
-            </div>
-          </li>
-          <li class="nav-item ">
-        <a class="nav-link" href="fullcalendar3.6.2.php">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-          <span>ปฏิทิน การออกรถ</span>
-        </a>
-      </li> 
-          <li class="nav-item ">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-table fas"></i>
-          <span>ตารางการออกรถ</span>
-        </a>
-      </li>
+  </ul> 
 
-      <li class="nav-item">
-        <a class="nav-link" href="tables.php">
-        <i class="fa fa-address-card-o" aria-hidden="true"></i>
-          <span>รายชื่อพนักงานขับรถ</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="listcar.php">
-        <i class="fa fa-car" aria-hidden="true"></i>
-          <span>รายละเอียดยานพาหนะ</span></a>
-      </li>
-      </ul>
-      
-          <?php } }else {?>   
-            <li class="nav-item ">
-        <a class="nav-link" href="fullcalendar3.6.2.php">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-          <span>ปฏิทิน การออกรถ</span>
-        </a>
-      </li> 
-
-      <li class="nav-item ">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-table fas"></i>
-          <span>ตารางการออกรถ</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="tables.php">
-        <i class="fa fa-address-card-o" aria-hidden="true"></i>
-          <span>รายชื่อพนักงานขับรถ</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="listcar.php">
-        <i class="fa fa-car" aria-hidden="true"></i>
-          <span>รายละเอียดยานพาหนะ</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="login.php">
-          <i class="fas fa-user-circle fa-fw"></i>
-          <span>เข้าสู่ระบบ</span>
-        </a>
-      </li>
-      <?php }?>
-    </ul>
-    
-    <script type="text/javascript">
-    function EnableDisableTextBox(ddlModels) {
-        var selectedValue = ddlModels.options[ddlModels.selectedIndex].value;
-        var txtOther = document.getElementById("txtOther");
-        txtOther.disabled = selectedValue == 8 ? false : true;
-        if (!txtOther.disabled) {
-            txtOther.focus();
-        }
-    }
-    </script> 
 
     <div id="content-wrapper">
 
@@ -223,10 +96,9 @@ echo "<h5 align = 'center'>";
 //  $today_date = date('Y-m-d');
 //  $date_5 = date('Y-m-d', strtotime("+7 days"));
 //2. query ข้อมูลจากตาราง tb_member: 
-$query = "SELECT * FROM expenses ";
+$query = "SELECT * FROM data ";
 if (isset($_POST['cmdsearch'])){
-  $query.=" WHERE date_ex  BETWEEN '".$_POST['date1']."' AND '".$_POST['date2']."'";
-  $query.="AND car_number LIKE '%".$_POST['car_number']."%' " or die("Error:" . mysqli_error());
+  $query.=" WHERE s_date  BETWEEN '".$_POST['date1']."' AND '".$_POST['date2']."'" or die("Error:" . mysqli_error());
 }
 //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result . 
 $result = mysqli_query($conn, $query); 
@@ -683,7 +555,7 @@ var myChart = new Chart(ctx, {
   <!-- Demo scripts for this page-->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/datatableThai.js"></script>
-  <?php }?>
+  
 </body>
 
 </html>

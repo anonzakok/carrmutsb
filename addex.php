@@ -37,9 +37,12 @@
 
             $sql = "INSERT INTO `expenses` (`ex_id`, `car_number`, `date_ex`,`mileage`, `number_liter`, `price_liter`, `sumprice`, `oil_ty`) 
                     VALUES (NULL, '".$_POST['car_number']."', '".$_POST['date_ex']."', '".$_POST['mileage']."', '".$_POST['number_liter']."', '".$_POST['price_liter']."', '$sumprice', '".$_POST['oil_ty']."');";
-                    
+           
+           $sql2 ="UPDATE `repair` SET `mileage` = '".$_POST['mileage']."' 
+             WHERE `car_number` = '".$_POST['car_number']."'; ";        
                 $result = $conn->query($sql);  
-            if($result){
+                $result2 = $conn->query($sql2);  
+            if($result2){
                     echo "<script>";
                     echo "alert('บันทึกสำเร็จ');";
                     echo "</script>";
@@ -105,6 +108,11 @@
         <i class="fa fa-car" aria-hidden="true"></i>
           <span>รายละเอียดยานพาหนะ</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tutorial.php">
+        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
+          <span>วีดีโอสอนใช้งานระบบ</span></a>
+      </li>
     </ul>
       <?php } if ($_SESSION['status']=='m'){?>
         <li class="nav-item dropdown active ">
@@ -122,9 +130,12 @@
               <a class="dropdown-item" href="adduser.php">เพิ่ม บัญชีสมาชิก</a>
               <a class="dropdown-item" href="deluser.php">ลบ บัญชีสมาชิก</a>
               <h6 class="dropdown-header">รายงานการใช้วัสดุเชื้อเพลิง:</h6>
-              <a class="dropdown-item" href="addex.php">เพิ่ม รายการใข้เชื้อเพลิง</a>
-              <a class="dropdown-item" href="delex.php">ลบ รายการใข้เชื้อเพลิง</a>
-              <a class="dropdown-item" href="sum.php">สรุป รายการใข้เชื้อเพลิง</a>
+              <a class="dropdown-item" href="addex.php">เพิ่ม รายการใช้เชื้อเพลิง</a>
+              <a class="dropdown-item" href="delex.php">ลบ รายการใช้เชื้อเพลิง</a>
+              <a class="dropdown-item" href="sum.php">สรุป รายการใช้เชื้อเพลิง</a>
+              <h6 class="dropdown-header">รายงานการซ่อมบำรุง:</h6>
+              <a class="dropdown-item" href="repair.php">ข้อมูล การซ่อมบำรุง</a>
+              <a class="dropdown-item" href="sumrepair.php">สรุป การซ่อมบำรุง</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ</a>
             </div>
@@ -151,6 +162,11 @@
         <a class="nav-link" href="listcar.php">
         <i class="fa fa-car" aria-hidden="true"></i>
           <span>รายละเอียดยานพาหนะ</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tutorial.php">
+        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
+          <span>วีดีโอสอนใช้งานระบบ</span></a>
       </li>
       </ul>
   
@@ -179,6 +195,11 @@
         <a class="nav-link" href="listcar.php">
         <i class="fa fa-car" aria-hidden="true"></i>
           <span>รายละเอียดยานพาหนะ</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tutorial.php">
+        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
+          <span>วีดีโอสอนใช้งานระบบ</span></a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="login.php">
