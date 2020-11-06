@@ -1,4 +1,4 @@
-# Sample PHP website
+
 # ขั้นตอนการ Build Project
 ```sh
  $ docker build -t rmutsb_car .
