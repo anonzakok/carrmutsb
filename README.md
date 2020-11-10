@@ -21,7 +21,7 @@ $ docker exec -it  ContainerName sh
 พิมพ์คำสั่งต่อไปนี้ 
 $ mysql -u root -p password
 $ use car_rmutsb
-$ mysql -u username -root p password < car_rmutsb.sql
+$ mysql -u username -root p password < SQLrmutsbcar.sql
 $ quit
 
 ```
